@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import BlockPlans from "../components/BlockPlans";
 // import NavigationBar from "../components/NavigationBar";
 // import BlockHero from "../components/BlockHero";
 
@@ -15,6 +16,7 @@ const HomePage: React.FC = () => {
 
   return (
     <>
+      <BlockPlans />
       {/* <BlockHero />
       <NavigationBar /> */}
     </>
