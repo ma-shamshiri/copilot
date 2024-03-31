@@ -3,23 +3,21 @@ import { Link as RouterLink } from "react-router-dom";
 import {
   Box,
   Flex,
-  useColorModeValue,
   HStack,
   Image,
   useColorMode,
   Link,
   useBreakpointValue,
+  useColorModeValue,
 } from "@chakra-ui/react";
 
 import ColorModeSwitch from "./ColorModeSwitch";
-import logo from "../assets/images/logo.png";
-import tedxWhite from "../assets/images/tedxWhite.png";
-import tedxBlack from "../assets/images/tedxBlack.png";
-
-// import LanguageSwitcher from "./LanguageSwitcher";
+import LanguageSwitcher from "./LanguageSwitcher";
+import captainDark from "../assets/images/captainDark.png";
+import captainLight from "../assets/images/captainLight.png";
 // import Sidebar from "./Sidebar/Sidebar";
 
-const NavBar2: React.FC = () => {
+const NavigationBar: React.FC = () => {
   const [isNavVisible, setIsNavVisible] = useState(true);
   const [scrollPosition, setScrollPosition] = useState(0);
 
@@ -38,81 +36,74 @@ const NavBar2: React.FC = () => {
 
   const { colorMode } = useColorMode();
 
-  const tedxImg = colorMode === "dark" ? tedxWhite : tedxBlack;
+  const captainImg = colorMode === "dark" ? captainLight : captainDark;
 
   const isLargeScreen = useBreakpointValue({ base: false, md: true });
 
   return (
     <>
-      <Box
+      {/* <Box
         width="100%"
         py={{ base: "1rem" }}
         px={{ base: "1rem" }}
-        bg={useColorModeValue("rgb(241,241,241)", "black")}
+        bg={useColorModeValue("rgba(255,255,255,0.1)", "rgba(0,0,0,0.1)")}
         display={{ base: "block", md: "none" }}
-        zIndex="999"
+        // zIndex="999"
+        position="absolute"
+        top={0}
       >
         <Link as={RouterLink} to={"/"} cursor="pointer">
           <Flex justifyContent={"center"} alignItems={"center"}>
             <HStack>
-              <Image src={logo} boxSize={{ base: "16%", lg: "70px" }} />
-              <Image src={tedxImg} width={{ base: "82%", lg: 300 }} />
+              <Image src={captainImg} width={{ base: "82%", lg: 300 }} />
             </HStack>
           </Flex>
         </Link>
-      </Box>
+      </Box> */}
       <Box
-        bg={useColorModeValue("rgb(241,241,241)", "black")}
-        py={{ base: "1.5rem" }}
-        px={{ base: "1rem" }}
+        bg={useColorModeValue("rgba(0,0,0,0.1)", "rgba(255,255,255,0.1)")}
+        py={{ base: "1rem" }}
+        px={{ base: "1.2rem", lg: "18rem" }}
         position="sticky"
         zIndex="999"
         top={isNavVisible ? "0" : "-100px"}
         transition="top 0.3s"
+        overflow="hidden"
       >
         <Flex
           justify={{ base: "space-between", lg: "space-between" }}
           align="center"
         >
           <Flex align="center">
-            <Box
+            {/* <Box
               zIndex="1000"
               marginTop="-10rem"
               marginLeft="-1.8rem"
               marginRight={{ base: "9rem", lg: "10rem" }}
             >
-              {/* <Sidebar /> */}
-            </Box>
+              <Sidebar />
+            </Box> */}
             <Link
-              display={{ base: "none", md: "block" }}
+              display={{ base: "block", md: "block" }}
               as={RouterLink}
               to={"/"}
               cursor="pointer"
             >
-              <Flex justifyContent={"center"} alignItems={"center"}>
-                <HStack>
-                  <Image
-                    src={logo}
-                    boxSize={{ base: "35px", md: "60px", lg: "70px" }}
-                  />
-                  <Image
-                    src={tedxImg}
-                    width={{ base: 160, md: 280, lg: 300 }}
-                  />
-                </HStack>
-              </Flex>
+              {/* <Flex justifyContent={"center"} alignItems={"center"}> */}
+              <Image src={captainImg} width={{ base: 140, md: 280, lg: 200 }} />
+              {/* </Flex> */}
             </Link>
           </Flex>
           {isLargeScreen ? (
             <HStack spacing={5} zIndex={999}>
-              {/* <LanguageSwitcher /> */}
+              <LanguageSwitcher />
               <ColorModeSwitch />
             </HStack>
           ) : (
-            <>
-              {/* <LanguageSwitcher /> */}
+            <HStack spacing={3} zIndex={999}>
+              <LanguageSwitcher />
               <ColorModeSwitch />
-            </>
+            </HStack>
           )}
         </Flex>
       </Box>
@@ -120,4 +111,4 @@ const NavBar2: React.FC = () => {
   );
 };
 
-export default NavBar2;
+export default NavigationBar;
