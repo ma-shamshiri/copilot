@@ -18,7 +18,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 const schema = z.object({
   name: z.string(),
-  email: z.string(),
+  description: z.string(),
   message: z.string(),
 });
 
@@ -40,21 +40,24 @@ const variants: { [key: string]: any } = {
 };
 
 const ContactUsForm = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors, isValid },
-    reset,
-  } = useForm<FormData>({ resolver: zodResolver(schema) });
+  // const {
+  //   register,
+  //   handleSubmit,
+  //   formState: { errors, isValid },
+  //   reset,
+  // } = useForm<FormData>({ resolver: zodResolver(schema) });
+
+  const { register, handleSubmit, reset } = useForm();
 
   const onSubmit = async (data: FieldValues) => {
     try {
+      const formData = Object.keys(data).length > 0 ? data : {};
       const response = await fetch("https://formspree.io/f/xdoqwpoz", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify(formData),
       });
 
       if (response.ok) {
@@ -238,7 +241,7 @@ const ContactUsForm = () => {
                   }}
                 /> */}
 
-                <FormControl id="email">
+                <FormControl id="description">
                   {/* <FormLabel
                     className="form_label"
                     htmlFor="email"
@@ -253,11 +256,11 @@ const ContactUsForm = () => {
                   >
                     <ChakraInput
                       className="form_control"
-                      id="email"
+                      id="description"
                       type="text"
                       placeholder={t("email")}
                       fontSize="1rem"
-                      {...register("email")}
+                      {...register("description")}
                     />
                   </Box>
                 </FormControl>
@@ -290,6 +293,7 @@ const ContactUsForm = () => {
                     borderRadius="lg"
                   >
                     <Textarea
+                      id="message"
                       {...register("message")}
                       placeholder={t("message")}
                       fontSize="1rem"
