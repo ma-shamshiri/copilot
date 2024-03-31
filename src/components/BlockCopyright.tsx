@@ -115,7 +115,7 @@ const BlockCopyright: React.FC = () => {
         <Box
           className="separator"
           marginY="1rem"
-          width="30rem"
+          width={{ base: "20rem", lg: "30rem" }}
           height="2px"
           style={{
             background: separatorColor,
