@@ -1,374 +1,274 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { Box, SimpleGrid, useColorModeValue } from "@chakra-ui/react";
+import { useTranslation } from "react-i18next";
+import { motion } from "framer-motion";
 import {
-  Box,
-  Grid,
-  Image,
-  Link,
-  List,
-  Text,
-  useColorModeValue,
-} from "@chakra-ui/react";
-// import AOS from "aos";
-// import "aos/dist/aos.css";
-import sponsor from "../assets/images/sponsor.webp";
-import teamMember from "../assets/images/teamMember.webp";
-import tickImage from "../assets/images/tick.svg";
-import speaker from "../assets/images/speaker.jpg";
-import starsImage from "../assets/images/stars.webp";
+  FaRegCreditCard,
+  FaTrainSubway,
+  FaPhoneVolume,
+  FaMobileRetro,
+} from "react-icons/fa6";
+import {
+  FaHome,
+  FaWifi,
+  FaCar,
+  FaAddressCard,
+  FaInternetExplorer,
+  FaMapMarkedAlt,
+  FaSuitcaseRolling,
+} from "react-icons/fa";
+import { MdOutlineLocalGroceryStore, MdLocalAirport } from "react-icons/md";
+import { PiDogFill, PiSimCardFill, PiTelevisionDuotone } from "react-icons/pi";
+import { SiShopify } from "react-icons/si";
+import { GiRotaryPhone } from "react-icons/gi";
+
+import PlanCard from "./PlanCard";
+import plan1 from "../assets/images/plans-04.jpeg";
+import plan2 from "../assets/images/plans-08.jpg";
+import plan3 from "../assets/images/plans-09.jpg";
+
+// interface BlockPlansProps {
+//   data: {
+//     src: string;
+//     title: string;
+//     description: string;
+//   }[];
+//   onClick: (index: number) => void;
+// }
 
 const BlockPlans: React.FC = () => {
-  //   useEffect(() => {
-  //     window.onload = () => {
-  //       AOS.init({
-  //         duration: 800,
-  //         easing: "ease-in-out",
-  //       });
-  //     };
-  //   }, []);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const [boxLoaded, setBoxLoaded] = useState(false);
+
+  const handleBoxLoad = () => {
+    setBoxLoaded(true);
+  };
+
+  useEffect(() => {}, [boxLoaded]);
+
+  useEffect(() => {
+    const delay = setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+
+    return () => clearTimeout(delay);
+  }, []);
+
+  const numElements = 3;
+
+  const [isHoveredArray, setIsHoveredArray] = useState(
+    Array(numElements).fill(false)
+  );
+
+  const handleHover = (index: number) => {
+    setIsHoveredArray((prevArray) => {
+      const newArray = [...prevArray];
+      newArray[index] = true;
+      return newArray;
+    });
+  };
+
+  const handleUnhover = (index: number) => {
+    setIsHoveredArray((prevArray) => {
+      const newArray = [...prevArray];
+      newArray[index] = false;
+      return newArray;
+    });
+  };
+
+  const { t } = useTranslation();
 
   return (
-    <Box
-      className="block block--dark block--skewed-right aos-animate"
-      bg={useColorModeValue(
-        "linear-gradient(180deg, #6868f7, #6868f7, #a6a6ff, #a6a6ff)",
-        "linear-gradient(180deg, #0e0e29, #0e0e29, #272763, #272763)"
-      )}
-      color="#7b858b"
-      overflow={"hidden"}
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1, ease: "easeInOut" }}
+      onAnimationComplete={handleBoxLoad}
     >
       <Box
-        width="100%"
-        height="100%"
-        backgroundImage={starsImage}
-        backgroundSize={{ base: "contain", lg: "cover" }}
-        padding="6rem 2rem"
-        paddingBottom={{ base: "13rem", lg: "17rem" }}
+        className="grid-outer-container"
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        marginTop={{ base: "30rem", lg: "18.5rem" }}
+        padding="2rem 2rem"
+        overflow="hidden"
+        // bg={useColorModeValue("gray.400", "gray.800")}
       >
         <Box
-          className="block__header container"
-          padding="0rem 2rem"
-          textAlign="center"
-          maxWidth="100rem"
-          margin="0 auto"
+          className="grid-inner-container"
+          width="100%"
+          maxWidth={{ base: "4000px", md: "450px", lg: "1200px" }}
+          margin={{ base: "0.5rem", md: "2.5rem", lg: "2rem" }}
         >
-          {/* <Box
-            className="aos-animate"
-            data-aos="fade-up"
-            data-aos-duration="500"
-          > */}
-          <Text
-            className="h2 block__heading"
-            color={useColorModeValue("gray.900", "gray.100")}
-            marginBottom="4rem"
-            marginTop="0"
-            fontSize={{ base: "4rem", lg: "6rem" }}
-            fontWeight="bold"
-            lineHeight="1.1"
+          <SimpleGrid
+            className="card-grid"
+            columns={{ base: 1, md: 1, lg: 3 }}
+            spacing={35}
+            padding="10px"
           >
-            Be a Part of Something Extraordinary
-          </Text>
-          <Text
-            className="p"
-            color={useColorModeValue("gray.800", "gray.300")}
-            marginBottom="10rem"
-            marginTop="0"
-            fontSize={{ base: "2.0rem", lg: "2.5rem" }}
-            lineHeight="1.5"
-          >
-            Connect with Visionaries, Innovators, and Changemakers <br />{" "}
-            Speakers, Team Members, and Sponsors Welcome!
-          </Text>
-          {/* </Box> */}
-          <Box className="grid grid--1x3">
-            <Grid
-              className="aos-animate"
-              display="grid"
-              templateColumns={["1fr", null, null, "repeat(3, 1fr)"]}
-              gap="8rem 4rem"
-              //   data-aos="fade-up"
-              //   data-aos-duration="500"
-            >
-              <Box
-                className="plan"
-                _hover={{ transform: "scale(1.05)" }}
-                transition="transform 0.2s ease-out"
-              >
-                <Box
-                  className="card card--secondary aos-animate"
-                  borderRadius="7px"
-                  boxShadow="0 0 30px 1px black"
-                  overflow="hidden"
-                  justifyContent="center"
-                  alignItems="center"
-                  maxWidth="500px"
-                  margin="0 auto"
-                  // data-aos="fade-right"
-                  // data-aos-duration="500"
-                >
-                  <Image
-                    src={speaker}
-                    width="100%"
-                    // objectFit="cover"
-                    opacity="0.99"
-                    // p="0.1rem 0.5%"
-                    // borderRadius="7px"
-                    borderTopRadius="7px"
-                  />
-                  <Box
-                    className="card__header"
-                    bg="linear-gradient(to bottom, #6322BF, #F226AA)"
-                    color="#fff"
-                    p="2rem 7%"
-                  >
-                    <Text
-                      className="plan__name"
-                      color="#fff"
-                      margin="0"
-                      fontSize={{ base: "6rem", lg: "3.6rem" }}
-                      fontWeight="bold"
-                    >
-                      Speaker
-                    </Text>
-                  </Box>
-                  <Box className="card__body" p="2rem 7%" bg="#FFFFFF">
-                    <List
-                      className="list list--tick"
-                      color="var(--color-headings)"
-                      padding={0}
-                      // paddingLeft={"3rem"}
-                      style={{
-                        listStyleImage: `url(${tickImage})`,
-                      }}
-                    >
-                      <Text>
-                        Join us as a Speaker to share your expertise and passion
-                        on the TED Talks stage, where your ideas can inspire the
-                        world.
-                      </Text>
+            <PlanCard
+              isHovered={isHoveredArray[1]}
+              handleHover={() => handleHover(1)}
+              handleUnhover={() => handleUnhover(1)}
+              eventPageHref={"/"}
+              eventImageHref={plan1}
+              titleText={t("packageYourOwn")}
+              badgeText={t("customizeYours")}
+              badgeTextColor={{ light: "white", dark: "white" }}
+              badgeBackgroundColor={{ light: "dodgerblue", dark: "dodgerblue" }}
+              badgeBorderColor={{ light: "blue", dark: "blue" }}
+              icon1={FaRegCreditCard}
+              icon2={FaTrainSubway}
+              icon3={MdOutlineLocalGroceryStore}
+              icon4={FaHome}
+              icon5={FaWifi}
+              icon6={FaPhoneVolume}
+              topBorderColor={useColorModeValue(
+                "linear-gradient(to left, transparent, #4747a3, #272763)",
+                "linear-gradient(to left, transparent, #7560F9 ,#4BFD85)"
+              )}
+              bottomBorderColor={useColorModeValue(
+                "linear-gradient(to left, #272763, #4747a3, transparent)",
+                "linear-gradient(to left, #4BFD85 ,#7560F9, transparent)"
+              )}
+              rightBorderColor={useColorModeValue(
+                "linear-gradient(to bottom, transparent, #4747a3, #272763)",
+                "linear-gradient(to bottom, transparent, #7560F9, #4BFD85)"
+              )}
+              leftBorderColor={useColorModeValue(
+                "linear-gradient(to bottom, #272763, #4747a3, transparent)",
+                "linear-gradient(to bottom, #4BFD85, #7560F9, transparent)"
+              )}
+              topBorderPosition={"-0.9rem"}
+              bottomBorderPosition={"-0.9rem"}
+              rightBorderPosition={"-0.9rem"}
+              leftBorderPosition={"-0.9rem"}
+              topBorderWidth={"100%"}
+              bottomBorderWidth={"100%"}
+              rightBorderWidth={"1.2rem"}
+              leftBorderWidth={"1.2rem"}
+              topBorderHeight={"1.2rem"}
+              bottomBorderHeight={"1.2rem"}
+              rightBorderHeight={"100%"}
+              leftBorderHeight={"100%"}
+              marginRight={{
+                sm: "",
+                base: "3rem",
+                md: "7rem",
+                lg: "",
+                xl: "",
+              }}
+            />
 
-                      <Link
-                        className="btn btn--secondary btn--block"
-                        // href="https://docs.google.com/forms/d/e/1FAIpQLSc54Ba2B975pYmKBXZVaXN0xdQ97e18fE8NmGb-WfT27KXJyw/viewform"
-                        href="/joinus/speaker/"
-                        // target="_blank"
-                        border="2px solid var(--color-headings)"
-                        borderRadius="40px"
-                        cursor="pointer"
-                        fontSize={{ base: "1.8rem", lg: "1.5rem" }}
-                        fontWeight="600"
-                        margin="1rem 0"
-                        outline="0"
-                        padding="2rem 4vw"
-                        textAlign="center"
-                        textTransform="uppercase"
-                        whiteSpace="nowrap"
-                        bg="#fff"
-                        color="var(--color-headings)"
-                        display="inline-block"
-                        width="100%"
-                        _hover={{
-                          bg: "var(--color-headings)",
-                          color: "#fff",
-                        }}
-                      >
-                        Join Us
-                      </Link>
-                    </List>
-                  </Box>
-                </Box>
-              </Box>
+            <PlanCard
+              isHovered={isHoveredArray[2]}
+              handleHover={() => handleHover(2)}
+              handleUnhover={() => handleUnhover(2)}
+              eventPageHref={"/"}
+              eventImageHref={plan2}
+              titleText={t("packageIdeal")}
+              badgeText={t("popular")}
+              badgeTextColor={{ light: "white", dark: "white" }}
+              badgeBackgroundColor={{ light: "tomato", dark: "tomato" }}
+              badgeBorderColor={{ light: "red", dark: "red" }}
+              icon1={FaCar}
+              icon2={FaAddressCard}
+              icon3={FaMobileRetro}
+              icon4={MdLocalAirport}
+              icon5={GiRotaryPhone}
+              icon6={FaSuitcaseRolling}
+              topBorderColor={
+                "linear-gradient(to left, transparent, #6322BF, #F226AA)"
+              }
+              bottomBorderColor={
+                "linear-gradient(to left, #F226AA, #6322BF, transparent)"
+              }
+              rightBorderColor={
+                "linear-gradient(to bottom, transparent, #6322BF, #F226AA)"
+              }
+              leftBorderColor={
+                "linear-gradient(to bottom, #F226AA, #6322BF, transparent)"
+              }
+              topBorderPosition={"-0.9rem"}
+              bottomBorderPosition={"-0.9rem"}
+              rightBorderPosition={"-0.9rem"}
+              leftBorderPosition={"-0.9rem"}
+              topBorderWidth={"100%"}
+              bottomBorderWidth={"100%"}
+              rightBorderWidth={"1.2rem"}
+              leftBorderWidth={"1.2rem"}
+              topBorderHeight={"1.2rem"}
+              bottomBorderHeight={"1.2rem"}
+              rightBorderHeight={"100%"}
+              leftBorderHeight={"100%"}
+              marginRight={{
+                sm: "",
+                base: "3rem",
+                md: "7rem",
+                lg: "",
+                xl: "",
+              }}
+            />
 
-              <Box
-                className="plan plan--popular aos-animate"
-                transform="scale(1.1)"
-                _hover={{ transform: "scale(1.15)" }}
-                transition="transform 0.2s ease-out"
-                // data-aos="fade-up"
-                // data-aos-duration="500"
-              >
-                <Box
-                  className="card card--secondary aos-animate"
-                  borderRadius="7px"
-                  boxShadow="0 0 30px 1px black"
-                  overflow="hidden"
-                  justifyContent="center"
-                  alignItems="center"
-                  maxWidth="500px"
-                  margin="0 auto"
-                  // data-aos="fade-right"
-                  // data-aos-duration="500"
-                >
-                  <Image
-                    src={teamMember}
-                    width="100%"
-                    // height="100%"
-                    // objectFit="fill"
-                    opacity="0.99"
-                    // p="0.1rem 0.5%"
-                    // borderRadius="7px"
-                    borderTopRadius="7px"
-                  />
-                  <Box
-                    className="card__header"
-                    bg="linear-gradient(to bottom, rgba(31,191,88, 1), rgba(1,186,234, 1))"
-                    color="#fff"
-                    p="2rem 7%"
-                  >
-                    <Text
-                      className="plan__name"
-                      color="#fff"
-                      margin="0"
-                      fontSize={{ base: "6rem", lg: "3.6rem" }}
-                      fontWeight="bold"
-                    >
-                      Team Member
-                    </Text>
-                  </Box>
-                  <Box className="card__body" p="2rem 7%" bg="#FFFFFF">
-                    <List
-                      className="list list--tick"
-                      color="var(--color-headings)"
-                      padding={0}
-                      // paddingLeft={"3rem"}
-                      style={{
-                        listStyleImage: `url(${tickImage})`,
-                      }}
-                    >
-                      <Text>
-                        Are you passionate about our mission and want to be part
-                        of a dynamic team working towards a common goal?
-                      </Text>
-
-                      <Link
-                        className="btn btn--secondary btn--block"
-                        // href="https://docs.google.com/forms/d/e/1FAIpQLSc0UPKkrAe914FpkjrmzyIRu0WEwJlS23JAEAx8KC8A3Vv4Tg/viewform"
-                        href="/joinus/team/"
-                        // target="_blank"
-                        border="2px solid var(--color-headings)"
-                        borderRadius="40px"
-                        cursor="pointer"
-                        fontSize={{ base: "1.8rem", lg: "1.5rem" }}
-                        fontWeight="600"
-                        margin="1rem 0"
-                        outline="0"
-                        padding="2rem 4vw"
-                        textAlign="center"
-                        textTransform="uppercase"
-                        whiteSpace="nowrap"
-                        bg="#fff"
-                        color="var(--color-headings)"
-                        display="inline-block"
-                        width="100%"
-                        _hover={{
-                          bg: "var(--color-headings)",
-                          color: "#fff",
-                        }}
-                      >
-                        Join Us
-                      </Link>
-                    </List>
-                  </Box>
-                </Box>
-              </Box>
-
-              <Box
-                className="plan aos-animate"
-                _hover={{ transform: "scale(1.05)" }}
-                transition="transform 0.2s ease-out"
-                // data-aos="fade-up"
-                // data-aos-duration="500"
-                bg={useColorModeValue("#FFFFFF", "gray.900")}
-              >
-                <Box
-                  className="card card--secondary aos-animate"
-                  borderRadius="7px"
-                  boxShadow="0 0 30px 1px black"
-                  overflow="hidden"
-                  justifyContent="center"
-                  alignItems="center"
-                  maxWidth="500px"
-                  margin="0 auto"
-                  // data-aos="fade-right"
-                  // data-aos-duration="500"
-                >
-                  <Image
-                    src={sponsor}
-                    width="100%"
-                    // objectFit="cover"
-                    opacity="0.99"
-                    // p="0.1rem 0.5%"
-                    // borderRadius="7px"
-                    borderTopRadius="7px"
-                  />
-                  <Box
-                    className="card__header"
-                    bg={
-                      "linear-gradient(to bottom, rgba(214, 20, 91, 1.0), rgba(251, 176, 59, 0.99))"
-                    }
-                    color="#fff"
-                    p="2rem 7%"
-                  >
-                    <Text
-                      className="plan__name"
-                      color="#fff"
-                      margin="0"
-                      fontSize={{ base: "6rem", lg: "3.6rem" }}
-                      fontWeight="bold"
-                    >
-                      Sponsor
-                    </Text>
-                  </Box>
-                  <Box className="card__body" p="2rem 7%" bg="#FFFFFF">
-                    <List
-                      className="list list--tick"
-                      color="var(--color-headings)"
-                      padding={0}
-                      // paddingLeft={"3rem"}
-                      style={{
-                        listStyleImage: `url(${tickImage})`,
-                      }}
-                    >
-                      <Text>
-                        Support our mission, be a crucial part! Join us as a
-                        Sponsor and make a lasting impact with TED Talks.
-                      </Text>
-
-                      <Link
-                        className="btn btn--secondary btn--block"
-                        // href="https://docs.google.com/forms/d/e/1FAIpQLSfkWbg1-z8OWOk6cJEPULsA8dPKrqdZVDUO6k36biPD1ydkQQ/viewform"
-                        href="/joinus/sponsor/"
-                        // target="_blank"
-                        border="2px solid var(--color-headings)"
-                        borderRadius="40px"
-                        cursor="pointer"
-                        fontSize={{ base: "1.8rem", lg: "1.5rem" }}
-                        fontWeight="600"
-                        margin="1rem 0"
-                        outline="0"
-                        padding="2rem 4vw"
-                        textAlign="center"
-                        textTransform="uppercase"
-                        whiteSpace="nowrap"
-                        bg="#fff"
-                        color="var(--color-headings)"
-                        display="inline-block"
-                        width="100%"
-                        _hover={{
-                          bg: "var(--color-headings)",
-                          color: "#fff",
-                        }}
-                      >
-                        Join Us
-                      </Link>
-                    </List>
-                  </Box>
-                </Box>
-              </Box>
-            </Grid>
-          </Box>
+            <PlanCard
+              isHovered={isHoveredArray[3]}
+              handleHover={() => handleHover(3)}
+              handleUnhover={() => handleUnhover(3)}
+              eventPageHref={"/"}
+              eventImageHref={plan3}
+              titleText={t("packageAll")}
+              badgeText={t("budgetFriendly")}
+              badgeTextColor={{ light: "black", dark: "black" }}
+              badgeBackgroundColor={{ light: "gold", dark: "gold" }}
+              badgeBorderColor={{ light: "orange", dark: "orange" }}
+              icon1={PiDogFill}
+              icon2={FaMapMarkedAlt}
+              icon3={FaInternetExplorer}
+              icon4={SiShopify}
+              icon5={PiTelevisionDuotone}
+              icon6={PiSimCardFill}
+              topBorderColor={useColorModeValue(
+                "linear-gradient(to left, transparent, #4747a3, #272763)",
+                "linear-gradient(to left, transparent, #7560F9 ,#4BFD85)"
+              )}
+              bottomBorderColor={useColorModeValue(
+                "linear-gradient(to left, #272763, #4747a3, transparent)",
+                "linear-gradient(to left, #4BFD85 ,#7560F9, transparent)"
+              )}
+              rightBorderColor={useColorModeValue(
+                "linear-gradient(to bottom, transparent, #4747a3, #272763)",
+                "linear-gradient(to bottom, transparent, #7560F9, #4BFD85)"
+              )}
+              leftBorderColor={useColorModeValue(
+                "linear-gradient(to bottom, #272763, #4747a3, transparent)",
+                "linear-gradient(to bottom, #4BFD85, #7560F9, transparent)"
+              )}
+              topBorderPosition={"-0.9rem"}
+              bottomBorderPosition={"-0.9rem"}
+              rightBorderPosition={"-0.9rem"}
+              leftBorderPosition={"-0.9rem"}
+              topBorderWidth={"100%"}
+              bottomBorderWidth={"100%"}
+              rightBorderWidth={"1.2rem"}
+              leftBorderWidth={"1.2rem"}
+              topBorderHeight={"1.2rem"}
+              bottomBorderHeight={"1.2rem"}
+              rightBorderHeight={"100%"}
+              leftBorderHeight={"100%"}
+              marginRight={{
+                sm: "",
+                base: "3rem",
+                md: "7rem",
+                lg: "",
+                xl: "",
+              }}
+            />
+          </SimpleGrid>
         </Box>
       </Box>
-    </Box>
+    </motion.div>
   );
 };
 
