@@ -3,13 +3,26 @@ import { motion, useInView } from "framer-motion";
 import {
   Box,
   Button,
-  Input,
+  FormControl,
+  FormLabel,
+  Input as ChakraInput,
   Textarea,
   useBreakpointValue,
   useColorModeValue,
 } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
+import z from "zod";
+import { FieldValues, useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 // import emailjs from "@emailjs/browser";
+
+const schema = z.object({
+  name: z.string(),
+  email: z.string(),
+  message: z.string(),
+});
+
+type FormData = z.infer<typeof schema>;
 
 const variants: { [key: string]: any } = {
   initial: {
@@ -27,12 +40,44 @@ const variants: { [key: string]: any } = {
 };
 
 const ContactUsForm = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isValid },
+    reset,
+  } = useForm<FormData>({ resolver: zodResolver(schema) });
+
+  const onSubmit = async (data: FieldValues) => {
+    try {
+      const response = await fetch("https://formspree.io/f/xdoqwpoz", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        // toast.success("Form submitted successfully!");
+        // Reset the form after a successful submission
+        console.log("submitted");
+        reset();
+      } else {
+        // toast.error("Error submitting form");
+        console.log("Error submitting form");
+      }
+    } catch (error) {
+      console.log("Error submitting form:", error);
+      // toast.error("Error submitting form");
+    }
+  };
+
   const { t } = useTranslation();
 
   const ref = useRef<HTMLDivElement>(null);
-  const formRef = useRef<HTMLFormElement>(null);
-  const [error, setError] = useState<boolean>(false);
-  const [success, setSuccess] = useState<boolean>(false);
+  // const formRef = useRef<HTMLFormElement>(null);
+  // const [error, setError] = useState<boolean>(false);
+  // const [success, setSuccess] = useState<boolean>(false);
 
   const isInView = useInView(ref, { margin: "-100px" });
 
@@ -40,30 +85,9 @@ const ContactUsForm = () => {
   const svgHeight = useBreakpointValue({ base: "20rem", lg: "30rem" });
   const svgColor = useColorModeValue("#343399", "orange");
 
-  //   const sendEmail = (e) => {
-  //     e.preventDefault();
-
-  //     emailjs
-  //       .sendForm(
-  //         "service_94y20xo",
-  //         "template_v10u2oh",
-  //         formRef.current,
-  //         "pX_2hasGmGcuvjXIW"
-  //       )
-  //       .then(
-  //         (result) => {
-  //           setSuccess(true);
-  //         },
-  //         (error) => {
-  //           setError(true);
-  //         }
-  //       );
-  //   };
-
   return (
     <motion.div
       ref={ref}
-      //   className="contact"
       variants={variants}
       initial="initial"
       whileInView="animate"
@@ -145,7 +169,8 @@ const ContactUsForm = () => {
             transition={{ delay: 3, duration: 1 }}
           >
             <form
-              ref={formRef}
+              // ref={formRef}
+              onSubmit={handleSubmit(onSubmit)}
               style={{
                 display: "flex",
                 flexDirection: "column",
@@ -159,7 +184,7 @@ const ContactUsForm = () => {
                 gap="1rem"
                 color={useColorModeValue("gray.800", "white")}
               >
-                <Input
+                {/* <Input
                   className="nameInput"
                   name="name"
                   placeholder={t("name")}
@@ -172,9 +197,33 @@ const ContactUsForm = () => {
                   _hover={{
                     borderColor: useColorModeValue("blue.600", "dodgerblue"),
                   }}
-                />
+                /> */}
 
-                <Input
+                <FormControl id="name">
+                  {/* <FormLabel
+                    className="form_label"
+                    htmlFor="name"
+                    fontSize={{ base: "1.8rem", lg: "1.7rem" }}
+                  >
+                    {t("name")}
+                  </FormLabel> */}
+                  <Box
+                    // padding="1rem"
+                    bg={useColorModeValue("#DDC887", "#232323")}
+                    borderRadius="lg"
+                  >
+                    <ChakraInput
+                      className="form_control"
+                      id="name"
+                      type="text"
+                      placeholder={t("name")}
+                      fontSize="1rem"
+                      {...register("name")}
+                    />
+                  </Box>
+                </FormControl>
+
+                {/* <Input
                   className="emailInput"
                   name="email"
                   placeholder={t("email")}
@@ -187,8 +236,33 @@ const ContactUsForm = () => {
                   _hover={{
                     borderColor: useColorModeValue("blue.600", "dodgerblue"),
                   }}
-                />
-                <Textarea
+                /> */}
+
+                <FormControl id="email">
+                  {/* <FormLabel
+                    className="form_label"
+                    htmlFor="email"
+                    fontSize={{ base: "1.8rem", lg: "1.7rem" }}
+                  >
+                    {t("email")}
+                  </FormLabel> */}
+                  <Box
+                    // padding="1rem"
+                    bg={useColorModeValue("#DDC887", "#232323")}
+                    borderRadius="lg"
+                  >
+                    <ChakraInput
+                      className="form_control"
+                      id="email"
+                      type="text"
+                      placeholder={t("email")}
+                      fontSize="1rem"
+                      {...register("email")}
+                    />
+                  </Box>
+                </FormControl>
+
+                {/* <Textarea
                   className="messageInput"
                   name="message"
                   placeholder={t("message")}
@@ -200,7 +274,30 @@ const ContactUsForm = () => {
                   _hover={{
                     borderColor: useColorModeValue("blue.600", "dodgerblue"),
                   }}
-                />
+                /> */}
+
+                <FormControl id="message">
+                  {/* <FormLabel
+                className="form_label"
+                htmlFor="message"
+                fontSize={{ base: "1.8rem", lg: "1.7rem" }}
+              >
+                {t("message")}
+              </FormLabel> */}
+                  <Box
+                    // padding="1rem"
+                    bg={useColorModeValue("#DDC887", "#232323")}
+                    borderRadius="lg"
+                  >
+                    <Textarea
+                      {...register("message")}
+                      placeholder={t("message")}
+                      fontSize="1rem"
+                      width="100%"
+                      height="15rem"
+                    />
+                  </Box>
+                </FormControl>
               </Box>
               <Box
                 className="buttonContainer"
@@ -210,6 +307,7 @@ const ContactUsForm = () => {
               >
                 <Button
                   className="submitButton"
+                  type="submit"
                   width="100%"
                   marginTop="1rem"
                   padding={{ base: "0.5rem", lg: "1rem" }}
@@ -227,8 +325,6 @@ const ContactUsForm = () => {
                   {t("submit")}
                 </Button>
               </Box>
-              {error && "Error"}
-              {success && "Success"}
             </form>
           </motion.div>
         </Box>
