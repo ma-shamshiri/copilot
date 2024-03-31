@@ -313,7 +313,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
               <Text
                 className="quote__organization"
                 color={useColorModeValue("gray.700", "#48F380")}
-                fontSize={{ base: "2rem", lg: "1.1rem" }}
+                fontSize={{ base: "1.2rem", lg: "1.1rem" }}
                 fontStyle="normal"
               >
                 {organization}
@@ -350,7 +350,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
         <Box
           className="quote"
           as="blockquote"
-          fontSize={{ base: "1.3rem", lg: "1.3rem" }}
+          fontSize={{ base: "1.2rem", lg: "1.3rem" }}
           fontStyle="italic"
           gridColumn={isLargerThanSm ? "span 2" : "span 1"}
           //   margin={{ base: "2rem 0", lg: "1.5rem 0 0 1rem" }}

@@ -180,7 +180,7 @@ const BlockAboutUs: React.FC = () => {
             <motion.div className="item" variants={secondVariants}>
               <Text
                 className="aboutUsP1"
-                fontSize={{ base: "2.0rem", lg: "1.5rem" }}
+                fontSize={{ base: "1.2rem", lg: "1.5rem" }}
                 // fontFamily="'Englebert', cursive"
                 paddingY="0.5rem"
                 //   fontFamily="'Concert One', sans-serif"
@@ -192,7 +192,7 @@ const BlockAboutUs: React.FC = () => {
             <motion.div className="item" variants={secondVariants}>
               <Text
                 className="aboutUsP2"
-                fontSize={{ base: "2.0rem", lg: "1.5rem" }}
+                fontSize={{ base: "1.2rem", lg: "1.5rem" }}
                 // fontFamily="'Englebert', cursive"
                 paddingY="0.5rem"
               >
@@ -203,7 +203,7 @@ const BlockAboutUs: React.FC = () => {
             <motion.div className="item" variants={secondVariants}>
               <Text
                 className="aboutUsP3"
-                fontSize={{ base: "2.0rem", lg: "1.5rem" }}
+                fontSize={{ base: "1.2rem", lg: "1.5rem" }}
                 // fontFamily="'Englebert', cursive"
                 paddingY="0.5rem"
                 textAlign="center"
@@ -214,7 +214,7 @@ const BlockAboutUs: React.FC = () => {
 
             {/* <motion.div className="item" variants={secondVariants}>
               <Text
-                fontSize={{ base: "2.0rem", lg: "1.5rem" }}
+                fontSize={{ base: "1.2rem", lg: "1.5rem" }}
                 fontFamily="'Englebert', cursive"
                 paddingY="0.5rem"
                 textAlign="center"
