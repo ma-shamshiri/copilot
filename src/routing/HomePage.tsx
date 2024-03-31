@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { Box } from "@chakra-ui/react";
+import NavigationBar from "../components/NavigationBar";
+import BlockHomeHero from "../components/BlockHomeHero";
 import BlockPlans from "../components/BlockPlans";
-// import NavigationBar from "../components/NavigationBar";
-// import BlockHero from "../components/BlockHero";
+import BlockAboutUs from "../components/BlockAboutUs";
+import BlockContactUs from "../components/BlockContactUs";
+import BlockCopyright from "../components/BlockCopyright";
 
 const HomePage: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -16,9 +20,14 @@ const HomePage: React.FC = () => {
 
   return (
     <>
-      <BlockPlans />
-      {/* <BlockHero />
-      <NavigationBar /> */}
+      <Box position="relative">
+        <NavigationBar />
+        <BlockHomeHero />
+        <BlockPlans />
+        <BlockAboutUs />
+        <BlockContactUs />
+        <BlockCopyright />
+      </Box>
     </>
   );
 };
