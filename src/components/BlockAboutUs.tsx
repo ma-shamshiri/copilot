@@ -181,7 +181,7 @@ const BlockAboutUs: React.FC = () => {
               <Text
                 className="aboutUsP1"
                 fontSize={{ base: "2.0rem", lg: "1.5rem" }}
-                fontFamily="'Englebert', cursive"
+                // fontFamily="'Englebert', cursive"
                 paddingY="0.5rem"
                 //   fontFamily="'Concert One', sans-serif"
               >
@@ -193,7 +193,7 @@ const BlockAboutUs: React.FC = () => {
               <Text
                 className="aboutUsP2"
                 fontSize={{ base: "2.0rem", lg: "1.5rem" }}
-                fontFamily="'Englebert', cursive"
+                // fontFamily="'Englebert', cursive"
                 paddingY="0.5rem"
               >
                 {t("aboutUsP2")}
@@ -204,7 +204,7 @@ const BlockAboutUs: React.FC = () => {
               <Text
                 className="aboutUsP3"
                 fontSize={{ base: "2.0rem", lg: "1.5rem" }}
-                fontFamily="'Englebert', cursive"
+                // fontFamily="'Englebert', cursive"
                 paddingY="0.5rem"
                 textAlign="center"
               >
@@ -275,14 +275,10 @@ const BlockAboutUs: React.FC = () => {
                 src={Samin}
                 linkedinHref="https://ca.linkedin.com/in/samin-majidi-05b77a250"
                 twitterHref="https://twitter.com/"
-                tedHref="https://www.ted.com/profiles/19449036/about"
+                instagramHref="https://www.instagram.com/"
                 author="Samin Majidi"
                 organization={t("phdStudentInPhysics") + " | McGill"}
-                quoteText="I'm a physics student who enjoys discovering new, interesting
-                          things. I became the organizer of TEDxAveLorne to share and
-                          learn from others. After being a team member at TEDxZanjan, I
-                          took on the role of leading the team, valuing teamwork and new
-                          opportunities."
+                quoteText="Stay tuned for a biography coming soon"
                 borderColor="linear-gradient(to left, transparent, #F226AA, #6322BF, transparent)"
                 badgeText="Co-Founder & CEO"
                 badgeColor="linear-gradient(to left, #6322BF, #6322BF, #F226AA, #F226AA)"
@@ -303,14 +299,14 @@ const BlockAboutUs: React.FC = () => {
                 src={Amin}
                 linkedinHref="https://ca.linkedin.com/in/ma-shamshiri"
                 twitterHref="https://twitter.com/"
-                tedHref="https://www.ted.com/profiles/11850053"
-                author="Mohammad Amin Shamshiri"
+                instagramHref="https://www.instagram.com/"
+                author="Amin Shamshiri"
                 organization={t("softwareEngineer") + " | EnerZam Inc."}
-                quoteText="Graduating from Concordia University with a master's in
-                          computer science, I'm here at TEDxAvelorne to bring my tech
-                          know-how to the table. Being a member of this team allows me
-                          to merge my love for technology with my desire to inspire and
-                          collaborate on groundbreaking ideas."
+                quoteText="I am Amin Shamshiri, a Machine Learning and Software Engineer with a master's degree 
+                           in Computer Science from Concordia University. My internship experience as a full-stack 
+                           developer adds depth to my expertise. At Captain, we aim to leverage technology to aid 
+                           individuals settling in Montreal, ensuring a seamless transition for newcomers and 
+                           unforgettable experiences for visitors."
                 borderColor="linear-gradient(to left, transparent, #7560F9, #4BFD85, transparent)"
                 badgeText="Co-Founder & CTO"
                 // badgeColor="linear-gradient(to left, rgba(214, 20, 91, 1.0), rgba(251, 176, 59, 0.99))"
