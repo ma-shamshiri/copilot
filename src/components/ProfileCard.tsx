@@ -28,7 +28,7 @@ interface ProfileCardProps {
   src: string;
   linkedinHref: string;
   twitterHref: string;
-  tedHref: string;
+  instagramHref: string;
   author: string;
   organization: string;
   quoteText: string;
@@ -46,7 +46,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
   src,
   linkedinHref,
   twitterHref,
-  tedHref,
+  instagramHref,
   author,
   organization,
   quoteText,
@@ -238,7 +238,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
             paddingTop="2rem"
             //   marginBottom="1rem"
           >
-            <Box as="a" href={tedHref} target="_blank">
+            <Box as="a" href={instagramHref} target="_blank">
               <IconButton
                 aria-label="instageram"
                 variant="ghost"
@@ -254,11 +254,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
                 borderColor={useColorModeValue("gray.600", "gray.400")}
               />
             </Box>
-            <Box
-              as="a"
-              href={twitterHref}
-              //   target="_blank"
-            >
+            <Box as="a" href={twitterHref} target="_blank">
               <IconButton
                 aria-label="twitter"
                 variant="ghost"
@@ -274,11 +270,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
                 borderColor={useColorModeValue("gray.600", "gray.400")}
               />
             </Box>
-            <Box
-              as="a"
-              href={linkedinHref}
-              // target="_blank"
-            >
+            <Box as="a" href={linkedinHref} target="_blank">
               <IconButton
                 aria-label="linkedin"
                 variant="ghost"
