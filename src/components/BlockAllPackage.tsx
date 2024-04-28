@@ -444,7 +444,7 @@ const BlockAllPackage: React.FC = () => {
                                 fontSize={{ base: "1rem", md: "1.5rem", lg: "" }}
                                 textAlign="center"
                             >
-                                Add to Your Cart
+                                Add to Your Card
                             </Text>
                         </HStack>
                     </Link>
