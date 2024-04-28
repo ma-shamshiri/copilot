@@ -1,11 +1,20 @@
 {
     "homeHeroTitle": "De l'Arrivée à l'Installation ...",
     "homeHeroSubTitle": " Est Là Pour Simplifier les Choses!",
+    "servicePageTitle": "Bienvenue dans votre Centre de Services Essentiels",
+    "servicePageSubTitle": "Des Solutions Conçues pour Simplifier Votre Expérience d'Installation",
+    "yourPackagePageTitle": "Personnalisez Vos Services",
+    "yourPackagePageSubTitle": "Des Solutions Sur Mesure pour Vos Besoins Uniques",
+    "idealPackagePageTitle": "Découvrez des Forfaits Prêts à l'Emploi",
+    "idealPackagePageSubTitle": "Explorez des Plans Préconçus Qui Correspondent à Vos Exigences",
+    "allPackagePageTitle": "Accédez à Tous les Services",
+    "allPackagePageSubTitle": "Profitez d'un Accès Illimité à Tous Nos Services, au Même Endroit",
+    "exploreServices": "Explorez Nos Services",
     "packageYourOwn": "Concevez Votre Propre Forfait",
-    "packageIdeal":"Trouvez Votre Forfait Idéal",
-    "packageAll":"Accédez à Tous les Forfaits",
-    "customizeYours":"Personnalisez le Vôtre",
-    "popular":"Populaire",
+    "packageIdeal": "Trouvez Votre Forfait Idéal",
+    "packageAll": "Accédez à Tous les Services",
+    "customizeYours": "Personnalisez le Vôtre",
+    "popular": "Populaire",
     "budgetFriendly": "Économique",
     "allRightsReserved": "Tous droits réservés",
     "contactOurTeam": "Contactez notre équipe",
@@ -23,4 +32,3 @@
     "softwareEngineer": "Ingénieur Logiciel",
     "phdStudentInPhysics": "Étudiant en Doctorat en Physique"
 }
-

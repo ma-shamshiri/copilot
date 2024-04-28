@@ -61,9 +61,10 @@ const NavigationBar: React.FC = () => {
         </Link>
       </Box> */}
       <Box
-        bg={useColorModeValue("rgba(0,0,0,0.1)", "rgba(255,255,255,0.1)")}
-        py={{ base: "1rem" }}
-        px={{ base: "1.2rem", lg: "18rem" }}
+        // bg={useColorModeValue("rgba(0,0,0,0.1)", "rgba(255,255,255,0.1)")}
+        bg={useColorModeValue("rgb(241,241,241)", "black")}
+        py={{ base: "0.6rem" }}
+        px={{ base: "1.2rem", md:"10rem", lg: "12rem", xl: "18rem" }}
         position="sticky"
         zIndex="999"
         top={isNavVisible ? "0" : "-100px"}
@@ -90,7 +91,7 @@ const NavigationBar: React.FC = () => {
               cursor="pointer"
             >
               {/* <Flex justifyContent={"center"} alignItems={"center"}> */}
-              <Image src={captainImg} width={{ base: 140, md: 280, lg: 200 }} />
+              <Image src={captainImg} width={{ base: 100, md: 130, lg: 140 }} />
               {/* </Flex> */}
             </Link>
           </Flex>

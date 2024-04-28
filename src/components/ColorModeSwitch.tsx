@@ -15,10 +15,10 @@ const ColorModeSwitch = () => {
 
   const isLightMode = colorMode === "light";
 
-  const iconSize = useBreakpointValue({ base: "1.3rem", lg: "1.5rem" });
+  const iconSize = useBreakpointValue({ base: "1.2rem", lg: "1.2rem" });
   const iconContainerSize = useBreakpointValue({
-    base: "3.1rem",
-    lg: "3.5rem",
+    base: "2.8rem",
+    lg: "2.8rem",
   });
 
   useEffect(() => {}, [boxLoaded]);

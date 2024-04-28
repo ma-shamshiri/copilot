@@ -14,6 +14,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
     <I18nextProvider i18n={i18n}>
       <ChakraProvider theme={theme}>
         <ColorModeScript initialColorMode={theme.config.initialColorMode} />
+        {/* <App /> */}
         <RouterProvider router={router} />
       </ChakraProvider>
     </I18nextProvider>

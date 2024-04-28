@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Box, SimpleGrid, useColorModeValue } from "@chakra-ui/react";
+import { Box, HStack, Link, SimpleGrid, Text, useBreakpointValue, useColorModeValue } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
+import { MdApps } from "react-icons/md";
 import {
   FaRegCreditCard,
   FaTrainSubway,
@@ -45,7 +46,7 @@ const BlockPlans: React.FC = () => {
     setBoxLoaded(true);
   };
 
-  useEffect(() => {}, [boxLoaded]);
+  useEffect(() => { }, [boxLoaded]);
 
   useEffect(() => {
     const delay = setTimeout(() => {
@@ -56,6 +57,16 @@ const BlockPlans: React.FC = () => {
   }, []);
 
   const numElements = 3;
+
+  const [isHoveredButton, setIsHoveredButton] = useState(false);
+
+  const handleHoverButton = () => {
+    setIsHoveredButton(true);
+  };
+
+  const handleUnHoverButton = () => {
+    setIsHoveredButton(false);
+  };
 
   const [isHoveredArray, setIsHoveredArray] = useState(
     Array(numElements).fill(false)
@@ -79,6 +90,8 @@ const BlockPlans: React.FC = () => {
 
   const { t } = useTranslation();
 
+  const iconSize = useBreakpointValue({ base: "27px", md: "32px", lg: "40px" });
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -91,17 +104,51 @@ const BlockPlans: React.FC = () => {
         display="flex"
         justifyContent="center"
         alignItems="center"
-        marginTop={{ base: "30rem", lg: "18.5rem" }}
+        marginTop={{ base: "30rem", lg: "18rem" }}
         padding="2rem 2rem"
         overflow="hidden"
-        // bg={useColorModeValue("gray.400", "gray.800")}
+      // bg={useColorModeValue("gray.400", "gray.800")}
       >
         <Box
           className="grid-inner-container"
           width="100%"
-          maxWidth={{ base: "4000px", md: "450px", lg: "1200px" }}
-          margin={{ base: "0.5rem", md: "2.5rem", lg: "2rem" }}
+          maxWidth={{ base: "420px", md: "420px", lg: "1000px" }}
+          margin={{ base: "0.5rem", md: "1rem", lg: "0rem" }}
         >
+
+          <Box className="buttonContainer" display="flex" justifyContent="center" alignItems="center"
+          >
+            <Link
+              position="relative"
+              className="button"
+              href="/services/"
+              width={{ base: "90%", lg: "23rem" }}
+              bg="#f04e2d"
+              color="#fff"
+              fontSize={{ base: "2rem", lg: "1.5rem" }}
+              fontFamily="'Acme', sans-serif"
+              padding="1rem"
+              marginY={{ base: "1rem", lg: "3rem" }}
+              marginBottom={{ base: "2.5rem", lg: "2rem" }}
+              boxShadow="0px 6px 10px rgba(0, 0, 0, 0.2), 0px -6px 10px rgba(0, 0, 0, 0.2)"
+              border="4px solid #F04E2D"
+              borderRadius="15px"
+              cursor="pointer"
+              _hover={{
+                bg: "gray.800",
+                color: "#f04e2d",
+              }}
+              transition="background-color 0.2s ease-out"
+              onMouseEnter={handleHoverButton}
+              onMouseLeave={handleUnHoverButton}
+            >
+              <HStack justifyContent="center" alignItems="center">
+                <MdApps size={iconSize} color={isHoveredButton ? "#f04e2d" : "white"} />
+                <Text fontSize={{ base: "1rem", md: "1.5rem", lg: "" }} textAlign="center">{t("exploreServices")}</Text>
+              </HStack>
+            </Link>
+          </Box>
+
           <SimpleGrid
             className="card-grid"
             columns={{ base: 1, md: 1, lg: 3 }}
@@ -112,7 +159,7 @@ const BlockPlans: React.FC = () => {
               isHovered={isHoveredArray[1]}
               handleHover={() => handleHover(1)}
               handleUnhover={() => handleUnhover(1)}
-              eventPageHref={"/"}
+              eventPageHref={"/your-package/"}
               eventImageHref={plan1}
               titleText={t("packageYourOwn")}
               badgeText={t("customizeYours")}
@@ -166,7 +213,7 @@ const BlockPlans: React.FC = () => {
               isHovered={isHoveredArray[2]}
               handleHover={() => handleHover(2)}
               handleUnhover={() => handleUnhover(2)}
-              eventPageHref={"/"}
+              eventPageHref={"/ideal-package/"}
               eventImageHref={plan2}
               titleText={t("packageIdeal")}
               badgeText={t("popular")}
@@ -216,7 +263,7 @@ const BlockPlans: React.FC = () => {
               isHovered={isHoveredArray[3]}
               handleHover={() => handleHover(3)}
               handleUnhover={() => handleUnhover(3)}
-              eventPageHref={"/"}
+              eventPageHref={"/all-packages/"}
               eventImageHref={plan3}
               titleText={t("packageAll")}
               badgeText={t("budgetFriendly")}

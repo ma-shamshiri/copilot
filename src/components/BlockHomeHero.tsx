@@ -10,6 +10,7 @@ import { useTranslation } from "react-i18next";
 import Typed from "react-typed";
 
 import v3 from "../assets/videos/3.mp4";
+import v5 from "../assets/videos/5.mp4";
 
 // import "yet-another-react-lightbox/styles.css";
 // import "yet-another-react-lightbox/plugins/captions.css";
@@ -99,13 +100,13 @@ const BlockHomeHero: React.FC = () => {
             loop
             muted
             style={{
-              opacity: "0.4",
+              opacity: "0.8",
               width: "100%",
               height: "100%",
               objectFit: "cover",
             }}
           >
-            <source src={v3} type="video/mp4" />
+            <source src={v5} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
           {/* <Box

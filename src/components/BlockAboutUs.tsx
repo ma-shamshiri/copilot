@@ -12,6 +12,7 @@ import { useTranslation } from "react-i18next";
 import ProfileCard from "./ProfileCard";
 import Amin from "../assets/images/Amin.webp";
 import Samin from "../assets/images/Samin.webp";
+import unknown from "../assets/images/unknown.webp";
 
 const firstVariants: { [key: string]: any } = {
   initial: {
@@ -138,7 +139,7 @@ const BlockAboutUs: React.FC = () => {
       >
         <Box
           className="headerContainer"
-          maxWidth="50rem"
+          maxWidth={{ base: "35rem", lg: "45rem" }}
           margin="0 auto"
           textAlign={{ base: "initial", lg: "justify" }}
         >
@@ -152,7 +153,7 @@ const BlockAboutUs: React.FC = () => {
               <Text
                 className="headerTitle"
                 color={useColorModeValue("gray.800", "white")}
-                fontSize={{ base: "4.0rem", lg: "5rem" }}
+                fontSize={{ base: "3rem", lg: "4rem" }}
                 fontWeight="bold"
                 maxWidth="50rem"
                 fontFamily="'Englebert', cursive"
@@ -166,7 +167,7 @@ const BlockAboutUs: React.FC = () => {
               <Flex justifyContent="center">
                 <Box
                   className="topSeparator"
-                  marginBottom="2rem"
+                  marginBottom="1rem"
                   width="50rem"
                   height="1px"
                   style={{
@@ -180,10 +181,10 @@ const BlockAboutUs: React.FC = () => {
             <motion.div className="item" variants={secondVariants}>
               <Text
                 className="aboutUsP1"
-                fontSize={{ base: "1.2rem", lg: "1.5rem" }}
+                fontSize={{ base: "1.1rem", lg: "1.2rem" }}
                 // fontFamily="'Englebert', cursive"
                 paddingY="0.5rem"
-                //   fontFamily="'Concert One', sans-serif"
+              //   fontFamily="'Concert One', sans-serif"
               >
                 {t("aboutUsP1")}
               </Text>
@@ -192,7 +193,7 @@ const BlockAboutUs: React.FC = () => {
             <motion.div className="item" variants={secondVariants}>
               <Text
                 className="aboutUsP2"
-                fontSize={{ base: "1.2rem", lg: "1.5rem" }}
+                fontSize={{ base: "1.1rem", lg: "1.2rem" }}
                 // fontFamily="'Englebert', cursive"
                 paddingY="0.5rem"
               >
@@ -203,7 +204,7 @@ const BlockAboutUs: React.FC = () => {
             <motion.div className="item" variants={secondVariants}>
               <Text
                 className="aboutUsP3"
-                fontSize={{ base: "1.2rem", lg: "1.5rem" }}
+                fontSize={{ base: "1.1rem", lg: "1.2rem" }}
                 // fontFamily="'Englebert', cursive"
                 paddingY="0.5rem"
                 textAlign="center"
@@ -227,7 +228,7 @@ const BlockAboutUs: React.FC = () => {
             <Flex justifyContent="center">
               <Box
                 className="bottomSeparator"
-                marginY="2rem"
+                marginY="1rem"
                 width="50rem"
                 height="1px"
                 style={{
@@ -244,7 +245,7 @@ const BlockAboutUs: React.FC = () => {
           maxWidth="90rem"
           // maxWidth="100%"
           margin="0 auto"
-          paddingTop={{ base: "10rem", lg: "5rem" }}
+          paddingTop={{ base: "4rem", lg: "4rem" }}
         >
           {/* <Text
           color={useColorModeValue("gray.800", "white")}
@@ -259,7 +260,9 @@ const BlockAboutUs: React.FC = () => {
 
           <SimpleGrid
             columns={{ base: 1, md: 1, lg: 2 }}
-            spacing={{ base: 20, lg: 20 }}
+            spacing={{ base: 14, lg: 0 }}
+            paddingLeft={{ lg: 28 }}
+
           >
             <motion.div
               ref={ref}
@@ -286,6 +289,7 @@ const BlockAboutUs: React.FC = () => {
             </motion.div>
 
             <motion.div
+              className="profileCardContainer2"
               ref={ref}
               variants={forthVariants}
               initial="initial"

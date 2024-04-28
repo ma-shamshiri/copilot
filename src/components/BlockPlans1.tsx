@@ -1,13 +1,4 @@
 import React, { useEffect } from "react";
-import {
-  Box,
-  Grid,
-  Image,
-  Link,
-  List,
-  Text,
-  useColorModeValue,
-} from "@chakra-ui/react";
 // import sponsor from "../assets/images/sponsor.webp";
 // import teamMember from "../assets/images/teamMember.webp";
 // import tickImage from "../assets/images/tick.svg";

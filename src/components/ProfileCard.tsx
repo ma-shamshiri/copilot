@@ -61,8 +61,9 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
     <Box
       className="cardContainer"
       position="relative"
-      width="100%"
-      height="100%"
+      width={{ base: "100%", lg: "85%" }}
+      height={{ base: "100%", lg: "98%" }}
+      // maxWidth={{ base: "450px" }}
       //   bg={useColorModeValue("gray.300", "gray.800")}
       bg={useColorModeValue(
         // "#F0E2B6",
@@ -70,7 +71,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
         "linear-gradient(to right bottom, #0e0e29, #0e0e29, #272763, #272763)"
         // "linear-gradient(to right top, #FF00CC, #333399)",
       )}
-      padding={{ base: "1rem 1rem 1rem 1rem", lg: "2.5rem 2rem 2rem 2rem" }}
+      padding={{ base: "1rem 1rem 1rem 1rem", lg: "0.5rem 0rem 2rem 1rem" }}
       borderRadius="7px"
       borderWidth="1rem"
       borderColor="transparent"
@@ -88,11 +89,11 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
       {/* ======= Rectangle ======= */}
       <Box
         position="absolute"
-        top={{ base: "100", lg: "25" }}
+        top={{ base: "100", lg: "13" }}
         right={{ base: "auto", lg: "0" }}
         left={{ base: "-65px", md: "auto", lg: "auto" }}
-        width={{ base: "170px", md: "200px", lg: "200px" }}
-        height={{ base: "32px", md: "35px", lg: "35px" }}
+        width={{ base: "160px", md: "160px", lg: "160px" }}
+        height={{ base: "29px", md: "29px", lg: "29px" }}
         bg={badgeColor}
         textAlign="right"
         transform={{ base: "rotate(90deg)", lg: "rotate(0deg)" }}
@@ -106,7 +107,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
           paddingTop={{ base: "10", lg: "2" }}
           paddingBottom={{ base: "1.5", lg: "auto" }}
           paddingRight={{ base: "12px", lg: "10px" }}
-          fontSize={{ base: "13px", md: "16px", lg: "16px" }}
+          fontSize={{ base: "12px", md: "12px", lg: "12px" }}
           fontWeight="bold"
           textColor="white"
           transform={{ base: "rotate(180deg)", lg: "rotate(0deg)" }}
@@ -124,9 +125,9 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
           //   height="10px"
           backgroundColor="transparent"
           borderStyle="solid"
-          borderLeftWidth="18px"
-          borderRightWidth="18px"
-          borderBottomWidth="36px"
+          borderLeftWidth="15px"
+          borderRightWidth="15px"
+          borderBottomWidth="29px"
           borderLeftColor="transparent"
           borderRightColor="transparent"
           borderBottomColor={useColorModeValue("#E0CC8E", "#111130")}
@@ -171,7 +172,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
         ]}
         templateRows="auto 1fr"
         gap={4}
-        marginTop={{ base: "5rem", md: "5rem", lg: "2.5rem", xl: "1rem" }}
+        marginTop={{ base: "1rem", md: "1rem", lg: "2.5rem", xl: "1rem" }}
       >
         {/* -------------------- First row with two columns -------------------- */}
 
@@ -197,7 +198,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
           >
             <Image
               src={src}
-              width={{ base: "100%", md: "50%", lg: "100%" }}
+              width={{ base: "70%", md: "40%", lg: "50%", xl: "60%" }}
               // width="20rem"
               // height="20rem"
               opacity={isHovered ? 1 : 0.9}
@@ -233,23 +234,23 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
           <Stack
             display="flex"
             flexDirection="row"
-            spacing={6}
+            spacing={3}
             justifyContent={"center"}
-            paddingTop="2rem"
-            //   marginBottom="1rem"
+            paddingTop="1rem"
+          // marginBottom="1rem"
           >
             <Box as="a" href={instagramHref} target="_blank">
               <IconButton
                 aria-label="instageram"
                 variant="ghost"
                 size="xl"
-                icon={<BsInstagram size="25px" />}
+                icon={<BsInstagram size="15px" />}
                 _hover={{
                   bg: useColorModeValue("gray.800", "gray.200"),
                   color: useColorModeValue("white", "gray.700"),
                 }}
                 isRound
-                boxSize="3.5rem"
+                boxSize="2.4rem"
                 borderWidth="1px"
                 borderColor={useColorModeValue("gray.600", "gray.400")}
               />
@@ -259,13 +260,13 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
                 aria-label="twitter"
                 variant="ghost"
                 size="xl"
-                icon={<BsTwitterX size="25px" />}
+                icon={<BsTwitterX size="15px" />}
                 _hover={{
                   bg: useColorModeValue("gray.800", "gray.200"),
                   color: useColorModeValue("white", "gray.700"),
                 }}
                 isRound
-                boxSize="3.5rem"
+                boxSize="2.4rem"
                 borderWidth="1px"
                 borderColor={useColorModeValue("gray.600", "gray.400")}
               />
@@ -275,13 +276,13 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
                 aria-label="linkedin"
                 variant="ghost"
                 size="xl"
-                icon={<BsLinkedin size="25px" />}
+                icon={<BsLinkedin size="15px" />}
                 _hover={{
                   bg: useColorModeValue("gray.800", "gray.200"),
                   color: useColorModeValue("white", "gray.700"),
                 }}
                 isRound
-                boxSize="3.5rem"
+                boxSize="2.4rem"
                 borderWidth="1px"
                 borderColor={useColorModeValue("gray.600", "gray.400")}
               />
@@ -302,10 +303,10 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
             > */}
             <Box margin={{ base: "0 2rem 0 0", lg: "0 0.5rem 0 1rem" }}>
               <Text
-                fontSize={{ base: "3rem", lg: "1.6rem" }}
+                fontSize={{ base: "1.8rem", lg: "1.4rem" }}
                 fontWeight="bold"
                 fontStyle="normal"
-                marginBottom="1rem"
+                marginBottom="0.2rem"
                 color={useColorModeValue("gray.800", "gray.300")}
               >
                 {author}
@@ -313,7 +314,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
               <Text
                 className="quote__organization"
                 color={useColorModeValue("gray.700", "#48F380")}
-                fontSize={{ base: "1.2rem", lg: "1.1rem" }}
+                fontSize="1rem"
                 fontStyle="normal"
               >
                 {organization}
@@ -323,22 +324,18 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
           </Flex>
         ) : (
           <Box gridColumn="1">
-            <Flex marginTop="1.5rem" flexDirection="column">
+            <Flex flexDirection="column">
               <Text
-                fontSize={{ base: "1.8rem", md: "1.8rem", lg: "1.5rem" }}
+                fontSize="1.4rem"
                 fontWeight="bold"
-                marginBottom="1rem"
+                marginBottom="0rem"
                 color={useColorModeValue("gray.800", "gray.400")}
               >
                 {author}
               </Text>
               <Text
                 color={useColorModeValue("#0aa13b", "#48F380")}
-                fontSize={{
-                  base: "1.1rem",
-                  md: "1.3rem",
-                  lg: "1.2rem",
-                }}
+                fontSize="1rem"
                 fontStyle="normal"
               >
                 {organization}
@@ -350,10 +347,10 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
         <Box
           className="quote"
           as="blockquote"
-          fontSize={{ base: "1.2rem", lg: "1.3rem" }}
+          fontSize={{ base: "1rem", lg: "1rem" }}
           fontStyle="italic"
           gridColumn={isLargerThanSm ? "span 2" : "span 1"}
-          //   margin={{ base: "2rem 0", lg: "1.5rem 0 0 1rem" }}
+        //   margin={{ base: "2rem 0", lg: "1.5rem 0 0 1rem" }}
         >
           <Text
             // className="quote__text"

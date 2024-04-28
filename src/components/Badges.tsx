@@ -16,13 +16,13 @@ interface BadgesProps {
 const Badges: React.FC<BadgesProps> = ({
   text,
   textColor = { light: "#fff", dark: "#000" },
-  textSize = { base: "0.7rem", lg: "0.8rem" },
+  textSize = { base: "0.7rem", lg: "0.7rem" },
   backgroundColor = { light: "#000", dark: "#fff" },
   fontWeight = "600",
   borderColor = { light: "#fff", dark: "#000" },
   borderWidth = "2px",
   borderRadius = "4rem",
-  padding = { base: "0.3rem 1.5rem", md: "0.4rem 1.4rem", lg: "0.3rem 1.5rem" },
+  padding = { base: "0.1rem 1rem", md: "0.1rem 1rem", lg: "0.1rem 1.2rem" },
   whiteSpace = "nowrap",
 }) => {
   return (

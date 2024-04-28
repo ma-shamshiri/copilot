@@ -76,7 +76,7 @@ const LanguageSwitcher: React.FC = () => {
             background: useColorModeValue("blue.400", "teal.400"),
             color: "white",
           }}
-          fontSize={{ base: 15, lg: 15 }}
+          fontSize={{ base: 14, lg: 14 }}
           fontWeight="bold"
         >
           EN
@@ -85,7 +85,7 @@ const LanguageSwitcher: React.FC = () => {
           variant={i18n.language === "fr" ? "solid" : "outline"}
           onClick={() => changeLanguage("fr")}
           transition="background 0.3s"
-          width={{ base: "40px", lg: "40px" }}
+          width={{ base: "10px", lg: "40px" }}
           height={{ base: "40px", lg: "40px" }}
           borderRadius="lg"
           colorScheme={useColorModeValue("blue", "teal")}
@@ -93,7 +93,7 @@ const LanguageSwitcher: React.FC = () => {
             background: useColorModeValue("blue.400", "teal.400"),
             color: "white",
           }}
-          fontSize={{ base: 15, lg: 15 }}
+          fontSize={{ base: 14, lg: 14 }}
           fontWeight="bold"
         >
           FR

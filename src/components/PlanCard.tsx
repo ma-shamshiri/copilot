@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import {
   Box,
@@ -84,6 +84,24 @@ const PlanCard: React.FC<PlanCardProps> = ({
   leftBorderHeight,
   marginRight,
 }) => {
+
+  const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth >= 1200);
+
+  useEffect(() => {
+    // window.scrollTo(0, 0);
+
+    const handleResize = () => {
+      setIsLargeScreen(window.innerWidth < 1024);
+      console.log(isLargeScreen);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <>
       <Link
@@ -98,6 +116,7 @@ const PlanCard: React.FC<PlanCardProps> = ({
           "linear-gradient(to right bottom, #0e0e29, #0e0e29, #272763, #272763)"
           // "linear-gradient(to right top, #FF00CC, #333399)",
         )}
+        width={"100%"}
       >
         <Box
           boxShadow={`0px 2px 2px rgba(0, 0, 0, 0.1), 0px 2px 2px rgba(0, 0, 0, 0.1), 0px 1px 3px 0.5px rgba(0, 0, 0, 0.8)`}
@@ -211,19 +230,19 @@ const PlanCard: React.FC<PlanCardProps> = ({
             </Box>
             <Box
               className="card__header"
-              maxWidth="13rem"
+              maxWidth="12rem"
               p={{
-                base: "0.8rem",
+                base: "0.4rem",
                 // md: "2.1rem",
                 // lg: "2.4rem",
                 // xl: "3.1rem",
               }}
-              // marginBottom="1rem"
+            // marginBottom="1rem"
             >
               <Text
                 className="plan__name"
                 color={useColorModeValue("gray.800", "gray.200")}
-                margin="0"
+                // margin="0"
                 fontSize={{
                   base: "1.5rem",
                   md: "1.8rem",
@@ -246,7 +265,7 @@ const PlanCard: React.FC<PlanCardProps> = ({
               marginBottom="1rem"
               justifyContent="space-around"
               alignItems="center"
-              // bg={"red"}
+            // bg={"red"}
             >
               <IconButton
                 aria-label="icon"
@@ -323,22 +342,26 @@ const PlanCard: React.FC<PlanCardProps> = ({
                 }}
                 transition="transform 0.15s ease-out"
               />
+              {isLargeScreen && (
 
-              <IconButton
-                aria-label="icon"
-                size="xl"
-                icon={icon6 && icon6({ size: 24 })}
-                color={useColorModeValue("gray.100", "gray.100")}
-                bg={useColorModeValue("blue", "blue")}
-                boxSize={{ base: "2.2rem", lg: "2.2rem" }}
-                _hover={{
-                  color: useColorModeValue("gray.100", "gray.100"),
-                  bg: useColorModeValue("blue", "blue"),
-                  transform: "scale(1.2)",
-                }}
-                transition="transform 0.15s ease-out"
-              />
+                <IconButton
+                  aria-label="icon"
+                  size="xl"
+                  icon={icon6 && icon6({ size: 24 })}
+                  color={useColorModeValue("gray.100", "gray.100")}
+                  bg={useColorModeValue("blue", "blue")}
+                  boxSize={{ base: "2.2rem", lg: "2.2rem" }}
+                  _hover={{
+                    color: useColorModeValue("gray.100", "gray.100"),
+                    bg: useColorModeValue("blue", "blue"),
+                    transform: "scale(1.2)",
+                  }}
+                  transition="transform 0.15s ease-out"
+                />
+              )}
+
             </Box>
+
           </VStack>
         </Box>
       </Link>
