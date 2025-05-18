@@ -7,6 +7,7 @@ import BlockAboutUs from "../components/BlockAboutUs";
 import BlockContactUs from "../components/BlockContactUs";
 import BlockCopyright from "../components/BlockCopyright";
 import BlockServices from "../components/BlockServices";
+import Plaint from "../components/Plaint";
 
 const HomePage: React.FC = () => {
   const [boxLoaded, setBoxLoaded] = useState(false);
@@ -23,12 +24,13 @@ const HomePage: React.FC = () => {
         transition={{ duration: 1, ease: "easeInOut" }}
         onAnimationComplete={handleBoxLoad}
       >
-        <NavigationBar />
+        {/* <NavigationBar />
         <BlockHomeHero />
         <BlockPlans />
         <BlockAboutUs />
         <BlockContactUs />
-        <BlockCopyright />
+        <BlockCopyright /> */}
+        <Plaint/>
       </motion.div>
     </>
   );
